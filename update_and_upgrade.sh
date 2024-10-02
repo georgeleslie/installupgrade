@@ -16,7 +16,7 @@ if [ -f "$LAST_RUN_FILE" ]; then
 
   # Check if 24 hours (86400 seconds) have passed
   if [ $TIME_DIFF -lt 86400 ]; then
-    echo "The script was already run within the last 24 hours."
+    echo "The script was already run at $(date -d @$LAST_RUN)."
     exit 0
   fi
 fi
@@ -34,3 +34,5 @@ echo "System is up to date."
 
 # Save the current time to the last run file
 echo $CURRENT_TIME > "$LAST_RUN_FILE"
+
+echo "Script run time saved. It was last run at $(date)."
